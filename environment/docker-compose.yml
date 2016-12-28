@@ -1,0 +1,25 @@
+version: '2'
+services:
+  web:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    container_name: quizy
+    environment:
+      - DB_HOST=db
+    ports:
+      - "3000:1000"
+      - "3001:3001"
+    volumes:
+      - ../:/code
+      - ${HOME}/.data/quizy/data/data_db/restore:/tmp/restore
+      - ${HOME}/.data/quizy/data/data_db/dump:/tmp/dump
+    depends_on:
+      - db
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ${HOME}/.data/quizy/data/db:/data/db
+      - ${HOME}/.data/quizy/data/configdb:/data/configdb
