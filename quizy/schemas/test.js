@@ -12,9 +12,50 @@ if (process.env.DB_HOST) {
 
 
 
+var userSchema = new Schema({
+  username: String,
+  name: String,
+  LastName: String,
+  email: String,
+  url: String,
+  image: String,
+  socialNetwork: [{
+    google: String,
+    facebook: String,
+    twitter: String,
+    email: String
+  }]
+});
+
+
+var User = mongoose.model('User', userSchema);
+
+var newUser = new User({
+  username: 'usernameString',
+  name: 'nameString',
+  LastName: 'lastNameString',
+  email: 'emailString',
+  url: 'urlString',
+  image: 'imageString',
+  socialNetwork: [{
+    google: 'googleString',
+    facebook: 'facebookString',
+    twitter: 'twitterString',
+    email: 'emailString'
+  }]
+});
+
+
+
+
+
+
+
+
+
 var testSchema = new Schema({
     title: String,
-    author: String,
+    author: userSchema,
     category: String,
     order: Boolean,
     askLater: Boolean,
@@ -44,9 +85,39 @@ var testSchema = new Schema({
 var Test = mongoose.model('Test', testSchema);
 
 
+// var newTest = new Test({
+//     title: 'title_String',
+//     author: 'author_String',
+//     category: 'category_String',
+//     order: true,
+//     askLater: true,
+//     allowNotAsk: true,
+//     statistics: [{
+//         passed: 5,
+//         nTimes: 2,
+//         volarations: 3,
+//         nShared: [{
+//             google: 2,
+//             facebook: 1,
+//             twitter: 6,
+//             email: 0
+//         }]
+//     }],
+//     dateCreation: Date.now(),
+//     dataPublished: Date.now(),
+//     timeToFinish: Date.now(),
+//     private: [{
+//         users: [{
+//             userId: 'Manolo',
+//             write: true
+//         }]
+//     }]
+// });
+
+
 var newTest = new Test({
     title: 'title_String',
-    author: 'author_String',
+    author: newUser,
     category: 'category_String',
     order: true,
     askLater: true,
@@ -72,28 +143,6 @@ var newTest = new Test({
         }]
     }]
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
