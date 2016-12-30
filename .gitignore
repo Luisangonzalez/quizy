@@ -46,5 +46,5 @@ jspm_packages
 # Yarn Integrity file
 .yarn-integrity
 
-# [gulp-cache](https://github.com/jgable/gulp-cache#filecache) file
-.gulp-cache
+# dist files
+quizy/dist/*
