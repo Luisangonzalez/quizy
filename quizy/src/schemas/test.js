@@ -1,7 +1,11 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import { User, userSchema } from './user';
 
-let Schema = mongoose.Schema;
+
+
+const Schema = mongoose.Schema;
 let db_host = 'localhost';
+
 
 console.log('Hello node');
 console.log(process.env.DB_HOST);
@@ -10,26 +14,7 @@ if (process.env.DB_HOST) {
     db_host = process.env.DB_HOST;
 }
 
-let userSchema = new Schema({
-    username: String,
-    name: String,
-    LastName: String,
-    email: String,
-    url: String,
-    image: String,
-    socialNetwork: [{
-        google: String,
-        facebook: String,
-        twitter: String,
-        email: String
-    }]
-});
 
-let manolo = () => console.log('hello gulp and nodemon');
-
-manolo();
-
-let User = mongoose.model('User', userSchema);
 
 let newUser = new User({
     username: 'usernameString',
@@ -76,37 +61,6 @@ let testSchema = new Schema({
 });
 
 let Test = mongoose.model('Test', testSchema);
-
-
-// let newTest = new Test({
-//     title: 'title_String',
-//     author: 'author_String',
-//     category: 'category_String',
-//     order: true,
-//     askLater: true,
-//     allowNotAsk: true,
-//     statistics: [{
-//         passed: 5,
-//         nTimes: 2,
-//         volarations: 3,
-//         nShared: [{
-//             google: 2,
-//             facebook: 1,
-//             twitter: 6,
-//             email: 0
-//         }]
-//     }],
-//     dateCreation: Date.now(),
-//     dataPublished: Date.now(),
-//     timeToFinish: Date.now(),
-//     private: [{
-//         users: [{
-//             userId: 'Manolo',
-//             write: true
-//         }]
-//     }]
-// });
-
 
 let newTest = new Test({
     title: 'title_String',
