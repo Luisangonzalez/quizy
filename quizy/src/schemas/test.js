@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
+let Schema = mongoose.Schema;
 let db_host = 'localhost';
 
 console.log('Hello node');
@@ -10,50 +10,43 @@ if (process.env.DB_HOST) {
     db_host = process.env.DB_HOST;
 }
 
-
-
-var userSchema = new Schema({
-  username: String,
-  name: String,
-  LastName: String,
-  email: String,
-  url: String,
-  image: String,
-  socialNetwork: [{
-    google: String,
-    facebook: String,
-    twitter: String,
-    email: String
-  }]
+let userSchema = new Schema({
+    username: String,
+    name: String,
+    LastName: String,
+    email: String,
+    url: String,
+    image: String,
+    socialNetwork: [{
+        google: String,
+        facebook: String,
+        twitter: String,
+        email: String
+    }]
 });
 
+let manolo = () => console.log('hello gulp and nodemon');
 
-var User = mongoose.model('User', userSchema);
+manolo();
 
-var newUser = new User({
-  username: 'usernameString',
-  name: 'nameString',
-  LastName: 'lastNameString',
-  email: 'emailString',
-  url: 'urlString',
-  image: 'imageString',
-  socialNetwork: [{
-    google: 'googleString',
-    facebook: 'facebookString',
-    twitter: 'twitterString',
-    email: 'emailString'
-  }]
+let User = mongoose.model('User', userSchema);
+
+let newUser = new User({
+    username: 'usernameString',
+    name: 'nameString',
+    LastName: 'lastNameString',
+    email: 'emailString',
+    url: 'urlString',
+    image: 'imageString',
+    socialNetwork: [{
+        google: 'googleString',
+        facebook: 'facebookString',
+        twitter: 'twitterString',
+        email: 'emailString'
+    }]
 });
 
-
-
-
-
-
-
-
-
-var testSchema = new Schema({
+let testSchema = new Schema({
     title: String,
     author: userSchema,
     category: String,
@@ -82,10 +75,10 @@ var testSchema = new Schema({
     }]
 });
 
-var Test = mongoose.model('Test', testSchema);
+let Test = mongoose.model('Test', testSchema);
 
 
-// var newTest = new Test({
+// let newTest = new Test({
 //     title: 'title_String',
 //     author: 'author_String',
 //     category: 'category_String',
@@ -115,7 +108,7 @@ var Test = mongoose.model('Test', testSchema);
 // });
 
 
-var newTest = new Test({
+let newTest = new Test({
     title: 'title_String',
     author: newUser,
     category: 'category_String',
@@ -147,21 +140,15 @@ var newTest = new Test({
 
 
 
-
-
-
-
-newTest.save(function(err, newTest){
-  if(err) return console.error(err);
-  console.log('Save Test');
+newTest.save(function(err, newTest) {
+    if (err) return console.error(err);
+    console.log('Save Tests');
 });
 
 
 
 
-
-
-var db = mongoose.connection;
+let db = mongoose.connection;
 mongoose.connect('mongodb://' + db_host + ':27017/test');
 
 db.on('error', console.error.bind(console, 'connection error:'));

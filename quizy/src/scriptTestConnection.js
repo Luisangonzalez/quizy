@@ -6,10 +6,8 @@ if (process.env.DB_HOST) {
     db_host = process.env.DB_HOST;
 }
 
-
 var MongoClient = require('mongodb').MongoClient,
     assert = require('assert');
-
 
 MongoClient.connect('mongodb://' + db_host + ':27017/manolo', function(err, db) {
 
@@ -26,11 +24,9 @@ MongoClient.connect('mongodb://' + db_host + ':27017/manolo', function(err, db) 
         assert.notEqual(docs.length, 0);
 
         docs.forEach(function(doc) {
-            console.log( doc.name + " is a " + doc.category_code + " company." );
+            console.log(doc.name + " is a " + doc.category_code + " company.");
         });
-
         db.close();
 
     });
-
 });
