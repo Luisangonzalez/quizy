@@ -10,7 +10,7 @@ DOCKER_COMPOSE_RUN_DB=${DOCKER_COMPOSE_DB} run db
 
 default: build
 
-build:
+build: install
 		${DOCKER_COMPOSE_WEB} build
 
 console: build
