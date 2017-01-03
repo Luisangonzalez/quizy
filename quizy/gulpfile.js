@@ -2,6 +2,16 @@ const gulp = require('gulp');
 const babel = require('gulp-babel');
 const nodemon = require('gulp-nodemon');
 const eslint = require('gulp-eslint');
+const execSync = require('child_process').execSync;
+
+let rmFolder = (dirName) => {
+  execSync('rm -rf '+dirName, (error) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+  });
+};
 
 
 gulp.task('lint', () => {
@@ -19,11 +29,21 @@ gulp.task('babel', () => {
   return stream;
 });
 
-gulp.task('watch', ['babel'], function () {
+gulp.task('deleteDirs', () => {
+  rmFolder('dist');
+});
+
+gulp.task('nodemon', () => {
   let stream = nodemon({
-                 script: 'dist/schemas/test.js'
+                 script: 'dist/models/test.js'
                , watch: 'src'
-               , tasks: ['lint','babel']
              });
   return stream;
 });
+
+gulp.task('watch', () => {
+  gulp.watch('src/**/*.js', ['lint','deleteDirs','babel','nodemon']);
+
+});
+
+gulp.task('compile', ['lint','deleteDirs','babel']);

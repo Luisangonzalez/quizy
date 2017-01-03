@@ -10,11 +10,17 @@ DOCKER_COMPOSE_RUN_DB=${DOCKER_COMPOSE_DB} run db
 
 default: build
 
+install: cache_clean build
+		${DOCKER_COMPOSE_RUN_WEB} yarn
+
 build: install
 		${DOCKER_COMPOSE_WEB} build
 
-console: build
-		${DOCKER_COMPOSE_RUN_WEB} npm run console
+watch: build
+		${DOCKER_COMPOSE_RUN_WEB} npm run watch
+
+test_db: build
+		${DOCKER_COMPOSE_RUN_WEB} npm run test_db
 
 execute:
 		${DOCKER_COMPOSE_WEB} run --rm --service-ports web /bin/bash -ci '/code/environment/execute.sh;'
@@ -22,8 +28,6 @@ execute:
 cache_clean:
 		${DOCKER_COMPOSE_RUN_WEB} npm cache clean
 
-install: cache_clean build
-		${DOCKER_COMPOSE_RUN_WEB} npm install
 
 up:
 		${DOCKER_COMPOSE_WEB} run --rm --service-ports web /bin/bash
