@@ -36,7 +36,7 @@ gulp.task('deleteDirs', () => {
 
 gulp.task('nodemon', () => {
   let stream = nodemon({
-                 script: 'dist/models/test.js'
+                 script: 'dist/createTest.js'
              });
   return stream;
 });
