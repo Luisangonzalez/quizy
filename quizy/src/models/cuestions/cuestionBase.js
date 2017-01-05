@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import {chooseCuestionSchema} from './cuestionChoose';
 import {oneCuestionSchema} from './oneCuestion';
+import {arrowCuestionSchema} from './arrow.js';
+
 
 const Schema = mongoose.Schema;
 
@@ -16,11 +18,19 @@ export const cuestionBaseSchema = new Schema({
             Join: String
         }
     ],
+    // Type of schemas:
+    //  -> SECTION
+    //  -> CHOOSE
+    //  -> TRUEFALSE
+    //  -> CHECK
+    //  -> ONE
+    //  -> ARROW
     type: String,
     choose: chooseCuestionSchema,
     truefalse: chooseCuestionSchema,
     check: chooseCuestionSchema,
-    one: oneCuestionSchema
+    one: oneCuestionSchema,
+    arrow: arrowCuestionSchema
 
 });
 

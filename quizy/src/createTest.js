@@ -4,6 +4,7 @@ import {Test} from './models/test.js';
 import {CuestionBase} from './models/cuestions/cuestionBase';
 import {ChooseCuestion} from './models/cuestions/cuestionChoose';
 import {OneCuestion} from './models/cuestions/oneCuestion';
+import {ArrowCuestion} from './models/cuestions/arrow';
 
 let newUser = new User({
     username: 'usernameString',
@@ -20,6 +21,23 @@ let newUser = new User({
             email: 'emailString'
         }
     ]
+});
+
+let newArrowCuestion = new ArrowCuestion({
+    cuestion: 'Selecciona con flechas',
+    columnA: [
+        {
+            phrase: 'leche',
+            indexColumnB: [0, 1]
+        }, {
+            phrase: 'huevo',
+            indexColumnB: [2]
+        }, {
+            phrase: 'plumas',
+            indexColumnB: [2]
+        }
+    ],
+    columnB: ['vaca', 'queso', 'gallina']
 });
 
 let newOneCuestion = new OneCuestion({
@@ -104,6 +122,30 @@ let newCuestionOne = new CuestionBase({
     one: newOneCuestion
 });
 
+let newCuestionArrow = new CuestionBase({
+    image: 'noimage',
+    youtube: 'noyoutbe',
+    link: 'no link',
+    description: 'description',
+    comment: [
+        {
+            ok: 'mu bien',
+            fail: 'mall',
+            Join: 'ale'
+        }
+    ],
+    type: 'ARROW',
+    arrow: newArrowCuestion
+});
+
+let newCuestionSection = new CuestionBase({
+    image: 'noimage',
+    youtube: 'noyoutbe',
+    link: 'no link',
+    description: 'description',
+    type: 'SECTION'
+});
+
 let newTest = new Test({
     title: 'title_String',
     author: newUser,
@@ -139,7 +181,13 @@ let newTest = new Test({
             ]
         }
     ],
-    cuestions: [newCuestionChoose, newCuestionTrueFalse, newCuestionOne, newCuestionCheck]
+    cuestions: [
+      newCuestionChoose,
+      newCuestionTrueFalse,
+      newCuestionOne,
+      newCuestionCheck,
+      newCuestionArrow,
+      newCuestionSection ]
 });
 
 let db_host;
