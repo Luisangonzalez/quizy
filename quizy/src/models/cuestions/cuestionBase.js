@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import {chooseCuestionSchema} from './cuestionChoose';
+import {oneCuestionSchema} from './oneCuestion';
 
 const Schema = mongoose.Schema;
 
@@ -7,11 +9,18 @@ export const cuestionBaseSchema = new Schema({
     youtube: String,
     link: String,
     description: String,
-    comment: [{
-      ok: String,
-      fail: String,
-      Join: String
-    }]
+    comment: [
+        {
+            ok: String,
+            fail: String,
+            Join: String
+        }
+    ],
+    type: String,
+    choose: chooseCuestionSchema,
+    truefalse: chooseCuestionSchema,
+    check: chooseCuestionSchema,
+    one: oneCuestionSchema
 
 });
 

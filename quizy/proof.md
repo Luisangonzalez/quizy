@@ -35,7 +35,7 @@
   * links
   * descrition
   * comment (join or ok/noOK)
-    * *choose*
+    * *choose OR true false*
       * question  
       * answers (whit correct)
     * *question*

@@ -2,7 +2,8 @@ import mongoose from 'mongoose';
 import {User} from './models/user.js';
 import {Test} from './models/test.js';
 import {CuestionBase} from './models/cuestions/cuestionBase';
-import {CuestionModelChoose, ChooseCuestion} from './models/cuestions/cuestionChoose';
+import {ChooseCuestion} from './models/cuestions/cuestionChoose';
+import {OneCuestion} from './models/cuestions/oneCuestion';
 
 let newUser = new User({
     username: 'usernameString',
@@ -21,21 +22,25 @@ let newUser = new User({
     ]
 });
 
-let newcuestionBase = new CuestionBase({
-    image: 'noimage',
-    youtube: 'noyoutbe',
-    link: 'no link',
-    description: 'description',
-    comment: [
+let newOneCuestion = new OneCuestion({
+  cuestion: '¿De que color era el caballo blanco de Santiago?',
+  answer: 'BLANCO'
+});
+
+let newChooseCuestion = new ChooseCuestion({
+    cuestion: '¿Cual es mi pueblo?',
+    answers: [
         {
-            ok: 'mu bien',
-            fail: 'mall',
-            Join: 'ale'
+            answer: 'Galvez',
+            isCorrect: false
+        }, {
+            answer: 'Menasalbas',
+            isCorrect: true
         }
     ]
 });
 
-let newCuestionChoose = new CuestionModelChoose({
+let newCuestionChoose = new CuestionBase({
     image: 'noimage',
     youtube: 'noyoutbe',
     link: 'no link',
@@ -47,19 +52,56 @@ let newCuestionChoose = new CuestionModelChoose({
             Join: 'ale'
         }
     ],
-    cuestion: '¿Cual es mi pueblo?',
-    answers: [
-        {
-          answer: [{
-              answer: 'Galvez',
-              isCorrect: false
-          },{
-              answer: 'Menasalbas',
-              isCorrect: true
-          }]
-        }
-    ]
+    type: 'CHOOSE',
+    choose: newChooseCuestion
+});
 
+let newCuestionTrueFalse = new CuestionBase({
+    image: 'noimage',
+    youtube: 'noyoutbe',
+    link: 'no link',
+    description: 'description',
+    comment: [
+        {
+            ok: 'mu bien',
+            fail: 'mall',
+            Join: 'ale'
+        }
+    ],
+    type: 'TRUEFALSE',
+    truefalse: newChooseCuestion
+});
+
+let newCuestionCheck = new CuestionBase({
+    image: 'noimage',
+    youtube: 'noyoutbe',
+    link: 'no link',
+    description: 'description',
+    comment: [
+        {
+            ok: 'mu bien',
+            fail: 'mall',
+            Join: 'ale'
+        }
+    ],
+    type: 'CHECK',
+    check: newChooseCuestion
+});
+
+let newCuestionOne = new CuestionBase({
+    image: 'noimage',
+    youtube: 'noyoutbe',
+    link: 'no link',
+    description: 'description',
+    comment: [
+        {
+            ok: 'mu bien',
+            fail: 'mall',
+            Join: 'ale'
+        }
+    ],
+    type: 'ONE',
+    one: newOneCuestion
 });
 
 let newTest = new Test({
@@ -97,7 +139,7 @@ let newTest = new Test({
             ]
         }
     ],
-    cuestions: [newCuestionChoose, newCuestionChoose]
+    cuestions: [newCuestionChoose, newCuestionTrueFalse, newCuestionOne, newCuestionCheck]
 });
 
 let db_host;

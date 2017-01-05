@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import {userSchema} from './user';
 import {cuestionBaseSchema} from './cuestions/cuestionBase';
-import {chooseCuestionSchema, ChooseCuestion, CuestionModelChoose} from './cuestions/cuestionChoose';
 
 const Schema = mongoose.Schema;
 
@@ -40,7 +39,7 @@ export const testSchema = new Schema({
             ]
         }
     ],
-    cuestions: [chooseCuestionSchema]
+    cuestions: [cuestionBaseSchema]
 });
 
 export const Test = mongoose.model('Test', testSchema);

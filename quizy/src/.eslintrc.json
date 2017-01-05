@@ -1,15 +1,15 @@
 {
+    "max-len": [1, {
+        "code": 10,
+        "tabWidth": 2,
+        "ignoreUrls": false
+    }],
     "parserOptions": {
         "ecmaVersion": 6,
         "sourceType": "module"
     },
     "rules": {
-        "semi": 2,
-        "max-len": [1, {
-            "code": 100,
-            "tabWidth": 2,
-            "ignoreUrls": true
-        }]
+        "semi": 2
     },
     "env": {
         "browser": false,
