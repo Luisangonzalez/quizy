@@ -6,7 +6,7 @@ const gulpsync = require('gulp-sync')(gulp);
 const execSync = require('child_process').execSync;
 
 let rmFolder = (dirName) => {
-  execSync('rm -rf '+dirName, (error) => {
+  execSync('rm -rf ' + dirName, (error) => {
     if (error) {
       console.error(`exec error: ${error}`);
       return;

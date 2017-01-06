@@ -1,11 +1,16 @@
 import mongoose from 'mongoose';
+import 'babel-polyfill';
+
+// import co from 'co';
+
 import {
-  Test,
-  User,
-  CuestionBase,
-  ChooseCuestion,
-  OneCuestion,
-  ArrowCuestion } from './models/models';
+    Test,
+    User,
+    CuestionBase,
+    ChooseCuestion,
+    OneCuestion,
+    ArrowCuestion
+} from './models/models';
 
 let newUser = new User({
     username: 'usernameString',
@@ -140,11 +145,11 @@ let newCuestionArrow = new CuestionBase({
 });
 
 let newCuestionSection = new CuestionBase({
-    image: 'noimage',
-    youtube: 'noyoutbe',
-    link: 'no link',
-    description: 'description',
-    type: 'SECTION'
+  image: 'noimage',
+  youtube: 'noyoutbe',
+  link: 'no link',
+  description: 'description',
+  type: 'SECTION'
 });
 
 let newTest = new Test({
@@ -183,12 +188,13 @@ let newTest = new Test({
         }
     ],
     cuestions: [
-      newCuestionChoose,
-      newCuestionTrueFalse,
-      newCuestionOne,
-      newCuestionCheck,
-      newCuestionArrow,
-      newCuestionSection ]
+        newCuestionChoose,
+        newCuestionTrueFalse,
+        newCuestionOne,
+        newCuestionCheck,
+        newCuestionArrow,
+        newCuestionSection
+    ]
 });
 
 let db_host;
@@ -199,16 +205,61 @@ if (process.env.DB_HOST) {
     db_host = 'localhost';
 }
 
-let db = mongoose.connection;
 mongoose.connect('mongodb://' + db_host + ':27017/test');
-
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
+mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
+mongoose.connection.once('open', function () {
     console.log('Connecto with mongoose');
 });
 
-newTest.save(function(err, newTest) {
-    if (err)
-        return console.error(err);
-    console.log('Save Tests');
-});
+
+
+
+
+// With ES6 Promise
+
+// let saveDb = function async (newTest){
+//   new Promise(function () {
+//     try {
+//       newTest.save();
+//     } catch (e) {
+//        console.error(e);
+//     } finally {
+//       console.log('Test Save');
+//     }
+//   });
+// };
+//
+// saveDb(newTest);
+
+// or
+
+// newTest.save(()=>{
+//   console.log('Test save');
+//   })
+//   .catch((err) => {
+//     console.error('Error:');
+//  });
+
+// With co package
+
+// co(function * () {
+//   try {
+//     yield newTest.save();
+//   } catch (e) {
+//     console.error(e);
+//   }
+// });
+
+// ES7 async
+
+let saveTest = async (newTest) => {
+  try {
+    newTest.save();
+  } catch (e) {
+     console.error(e);
+  } finally {
+    console.log('Test Save async');
+  }
+};
+
+saveTest(newTest);

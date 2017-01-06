@@ -7,8 +7,6 @@ import {
   arrowCuestionSchema,
   testSchema  } from './schemas';
 
-const Schema = mongoose.Schema;
-
 export const User = mongoose.model('User', userSchema);
 export const CuestionBase = mongoose.model('CuestionBase', cuestionBaseSchema);
 export const ChooseCuestion = mongoose.model('CuestionChoose', chooseCuestionSchema);

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import {chooseCuestionSchema} from './cuestionChoose';
-import {oneCuestionSchema} from './oneCuestion';
-import {arrowCuestionSchema} from './arrow.js';
+import { chooseCuestionSchema } from './cuestionChoose';
+import { oneCuestionSchema } from './oneCuestion';
+import { arrowCuestionSchema } from './arrow.js';
 
 const Schema = mongoose.Schema;
 

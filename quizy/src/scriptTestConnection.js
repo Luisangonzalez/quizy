@@ -9,7 +9,7 @@ if (process.env.DB_HOST) {
 const MongoClient = require('mongodb').MongoClient,
     assert = require('assert');
 
-MongoClient.connect('mongodb://' + db_host + ':27017/test', function(err, db) {
+MongoClient.connect('mongodb://' + db_host + ':27017/test', function (err) {
     assert.equal(err, null);
-    console.log("Successfully connected to MongoDB.");
+    console.log('Successfully connected to MongoDB.');
 });

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import {cuestionBaseSchema, userSchema} from './schemas';
+import { cuestionBaseSchema, userSchema } from './schemas';
 
 const Schema = mongoose.Schema;
 
