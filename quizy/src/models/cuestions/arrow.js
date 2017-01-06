@@ -13,5 +13,3 @@ export const arrowCuestionSchema = new Schema({
     ],
     columnB: [String]
 });
-
-export const ArrowCuestion = mongoose.model('ArrowCuestion', arrowCuestionSchema);

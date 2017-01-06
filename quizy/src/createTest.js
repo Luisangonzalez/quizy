@@ -1,10 +1,11 @@
 import mongoose from 'mongoose';
-import {User} from './models/user.js';
-import {Test} from './models/test.js';
-import {CuestionBase} from './models/cuestions/cuestionBase';
-import {ChooseCuestion} from './models/cuestions/cuestionChoose';
-import {OneCuestion} from './models/cuestions/oneCuestion';
-import {ArrowCuestion} from './models/cuestions/arrow';
+import {
+  Test,
+  User,
+  CuestionBase,
+  ChooseCuestion,
+  OneCuestion,
+  ArrowCuestion } from './models/models';
 
 let newUser = new User({
     username: 'usernameString',

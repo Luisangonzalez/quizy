@@ -13,5 +13,3 @@ export const chooseCuestionSchema = new Schema({
     ]
 
 });
-
-export const ChooseCuestion = mongoose.model('CuestionChoose', chooseCuestionSchema);

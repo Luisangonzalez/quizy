@@ -3,7 +3,6 @@ import {chooseCuestionSchema} from './cuestionChoose';
 import {oneCuestionSchema} from './oneCuestion';
 import {arrowCuestionSchema} from './arrow.js';
 
-
 const Schema = mongoose.Schema;
 
 export const cuestionBaseSchema = new Schema({
@@ -33,5 +32,3 @@ export const cuestionBaseSchema = new Schema({
     arrow: arrowCuestionSchema
 
 });
-
-export const CuestionBase = mongoose.model('CuestionBase', cuestionBaseSchema);

@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
-import {userSchema} from './user';
-import {cuestionBaseSchema} from './cuestions/cuestionBase';
+import {cuestionBaseSchema, userSchema} from './schemas';
 
 const Schema = mongoose.Schema;
 
@@ -41,5 +40,3 @@ export const testSchema = new Schema({
     ],
     cuestions: [cuestionBaseSchema]
 });
-
-export const Test = mongoose.model('Test', testSchema);
