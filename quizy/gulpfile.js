@@ -34,16 +34,18 @@ gulp.task('deleteDirs', () => {
   rmFolder('dist');
 });
 
-gulp.task('nodemon', () => {
+gulp.task('serverNodemon', () => {
   let stream = nodemon({
-                 script: 'dist/createTest.js'
+                 script: 'dist/server.js'
              });
   return stream;
 });
 
 gulp.task('watch', () => {
-  gulp.watch('src/**/*.js', ['compile']);
+  gulp.watch('src/**/*.js', ['server']);
 
 });
 
-gulp.task('compile', gulpsync.sync(['deleteDirs', 'lint', 'babel','nodemon']));
+gulp.task('server', gulpsync.sync(['compile','serverNodemon']));
+
+gulp.task('compile', gulpsync.sync(['deleteDirs', 'lint', 'babel']));

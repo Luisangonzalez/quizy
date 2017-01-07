@@ -13,14 +13,20 @@ default: build
 install: cache_clean build
 		${DOCKER_COMPOSE_RUN_WEB} yarn
 
-build: install
+build: install compile
 		${DOCKER_COMPOSE_WEB} build
 
 watch: build
-		${DOCKER_COMPOSE_RUN_WEB} npm run watch
+		${DOCKER_COMPOSE_WEB} run --rm --service-ports web npm run watch
+
+create_test: build
+		${DOCKER_COMPOSE_RUN_WEB} npm run createTest
 
 test_db: build
 		${DOCKER_COMPOSE_RUN_WEB} npm run test_db
+
+compile: build
+		${DOCKER_COMPOSE_RUN_WEB} npm run compile
 
 execute:
 		${DOCKER_COMPOSE_WEB} run --rm --service-ports web /bin/bash -ci '/code/environment/execute.sh;'

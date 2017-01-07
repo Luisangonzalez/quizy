@@ -1,6 +1,5 @@
-import mongoose from 'mongoose';
+import { connect } from './server';
 import 'babel-polyfill';
-
 // import co from 'co';
 
 import {
@@ -197,23 +196,28 @@ let newTest = new Test({
     ]
 });
 
-let db_host;
 
-if (process.env.DB_HOST) {
-    db_host = process.env.DB_HOST;
-} else {
-    db_host = 'localhost';
-}
+// const hostDB = () => {
+//   let db_host;
+//   if (process.env.DB_HOST) {
+//     db_host = process.env.DB_HOST;
+//   } else {
+//     db_host = 'localhost';
+//   }
+// return db_host;
+// };
+//
+// const connectDB = () => {
+//   mongoose.connect('mongodb://' + hostDB() + ':27017/test');
+//   mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
+//   mongoose.connection.once('open', function () {
+//     console.log('Connecto with mongoose');
+//   });
+// };
+//
+// connectDB();
 
-mongoose.connect('mongodb://' + db_host + ':27017/test');
-mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
-mongoose.connection.once('open', function () {
-    console.log('Connecto with mongoose');
-});
-
-
-
-
+connect();
 
 // With ES6 Promise
 

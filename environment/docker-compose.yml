@@ -7,9 +7,9 @@ services:
     container_name: quizy
     environment:
       - DB_HOST=db
+      - WEB_PORT=3000
     ports:
-      - "3000:1000"
-      - "3001:3001"
+      - "3000:3000"
     volumes:
       - ../:/code
       - ${HOME}/.data/quizy/data/data_db/restore:/tmp/restore
