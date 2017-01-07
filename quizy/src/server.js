@@ -4,8 +4,8 @@ import { Test } from './models/models';
 import 'babel-polyfill';
 // import co from 'co';
 
-
 const app = express();
+
 const hostDB = () => {
   let db_host;
   if (process.env.DB_HOST) {
