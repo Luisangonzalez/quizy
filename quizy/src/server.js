@@ -1,10 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import { Test } from './models/models';
 import 'babel-polyfill';
+import { routes } from './routes';
 // import co from 'co';
 
-const app = express();
+export const app = express();
 
 const hostDB = () => {
   let db_host;
@@ -40,52 +40,7 @@ export const connect = () => {
 };
 
 connect();
+routes(app);
 
-app.get('/', (req, res) => {
-      res.send('Hello !!');
-});
-
-let getOne = (model) => {
-  return new Promise(function (resolve, reject) {
-    model.findOne().exec((err, model) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(model);
-      }
-    });
-  });
-};
-
-// Co
-// let getOne = co.wrap(function* (model) {
-//   console.log('getONe');
-//   let m;
-//   try {
-//     m = yield model.find().exec();
-//   } catch (e) {
-//     console.error(e);
-//   }
-//   console.log(m);
-//   return m;
-// });
-
-// basic ES5
-
-// let query = Test.find();
-// query.exec((err, test) => {
-//   if (err) {
-//     res.send(err);
-//   } else {
-//     res.json(test);
-//   }
-// });
-
-app.get('/alltest/:manolo', (req, res) => {
-  console.log('req :', req.params);
-
-  getOne(Test).then((v) => {
-    res.send(v);
-  });
-
-});
+// ES5
+// require('./routes.js')(app);
