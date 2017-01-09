@@ -22,9 +22,6 @@ watch: build
 create_test: build
 		${DOCKER_COMPOSE_RUN_WEB} npm run createTest
 
-test_db: build
-		${DOCKER_COMPOSE_RUN_WEB} npm run test_db
-
 compile: build
 		${DOCKER_COMPOSE_RUN_WEB} npm run compile
 
