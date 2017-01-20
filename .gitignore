@@ -51,3 +51,6 @@ yarn.lock
 
 # dist files
 quizy/dist/*
+
+# Environment (https://github.com/motdotla/dotenv)
+.env

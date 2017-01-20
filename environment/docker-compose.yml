@@ -6,8 +6,8 @@ services:
       dockerfile: Dockerfile
     container_name: quizy
     environment:
-      - DB_HOST=db
-      - WEB_PORT=3000
+      - DOCKER_DB=mongodb://db:27017/test
+      - DOCKER_WEB_PORT=3000
     ports:
       - "3000:3000"
     volumes:
