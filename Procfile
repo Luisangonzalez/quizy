@@ -1,1 +1,1 @@
-web: node dist/server.js
+web: sh -c 'cd quizy && node dist/server.js' 
